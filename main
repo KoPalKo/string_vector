@@ -1,0 +1,43 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <algorithm> 
+using namespace std;
+
+vector<string> backwards(vector<string>& a) { //backwards function
+	reverse(a.begin(), a.end());
+	for (int i = 0; i <= a.size()-1; i++) {
+		reverse(a[i].begin(), a[i].end());
+	}
+	return a;
+}
+
+int main() {
+	string input;
+	vector<string> v;
+	cout << "Type something: ";
+
+	for (int i = 0; input != "stop"; i++) //vector input
+	{
+		getline(cin, input);
+		if (input != "stop")
+		{
+			v.push_back(input);
+		}
+		else { cout << "Terminated." << endl; }
+	}
+	sort(v.begin(), v.end());
+	cout << "Sorted vector: " << endl;
+	for (vector<string>::iterator it = v.begin(); it != v.end(); ++it) {
+		cout << ' ' << *it << endl;
+	}
+	backwards(v);
+	cout << "Backwards vector: " << endl;
+	for (vector<string>::iterator it = v.begin(); it != v.end(); ++it) {
+		cout << ' ' << *it << endl;
+	}
+	return 0;
+
+}
+
